@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume v2 — E-Commerce & Digital Marketing — ธนเทพ โสภาคำ</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Noto+Serif+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --panel: #141414;
+    --card: #1a1a1a;
+    --border: #2a2a2a;
+    --accent: #f0a500;
+    --accent2: #ffc94d;
+    --white: #f5f5f0;
+    --muted: #888;
+    --green: #22c55e;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Sarabun', sans-serif;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .page {
+    width: 900px;
+    background: var(--panel);
+    box-shadow: 0 0 0 1px var(--border), 0 40px 80px rgba(0,0,0,0.6);
+    overflow: hidden;
+  }
+
+  /* ── TOP HERO ── */
+  .hero {
+    background: var(--bg);
+    padding: 44px 48px 36px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240,165,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', 'Noto Serif Thai', sans-serif;
+    font-size: 54px;
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .hero-name span { color: var(--accent); }
+
+  .hero-about {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+
+  /* Stats */
+  .stats-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 160px;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    text-align: right;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px; letter-spacing: 1px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* Contact strip */
+  .contact-strip {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+  }
+
+  .contact-chip {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 20px;
+    font-size: 11.5px;
+    color: var(--muted);
+    border-right: 1px solid var(--border);
+  }
+
+  .contact-chip svg { width: 12px; height: 12px; fill: var(--accent); flex-shrink: 0; }
+
+  /* ── BODY ── */
+  .body { display: grid; grid-template-columns: 1fr 260px; }
+
+  /* Main col */
+  .main-col { padding: 36px 40px; border-right: 1px solid var(--border); }
+
+  .sec-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .sec-title::after {
+    content: ''; flex: 1;
+    height: 1px; background: var(--border);
+  }
+
+  .m-section { margin-bottom: 32px; }
+
+  /* Platform badges */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .platform-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    transition: border-color 0.2s;
+  }
+
+  .platform-card:hover { border-color: var(--accent); }
+
+  .p-name {
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .p-desc {
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Experience */
+  .exp-item {
+    margin-bottom: 24px;
+    position: relative;
+    padding: 18px 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .exp-item.current { border-color: rgba(240,165,0,0.3); }
+
+  .current-badge {
+    position: absolute; top: -1px; right: 16px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'DM Mono', monospace;
+    font-size: 8px; font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .exp-row {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 8px;
+    margin-bottom: 3px; flex-wrap: wrap;
+  }
+
+  .exp-co {
+    font-weight: 700; font-size: 14px;
+    color: var(--white);
+  }
+
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; color: var(--muted);
+  }
+
+  .exp-role {
+    font-size: 11.5px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+
+  .exp-list li {
+    font-size: 12px; color: #aaa;
+    line-height: 1.65; padding-left: 14px;
+    position: relative;
+  }
+
+  .exp-list li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--accent); font-size: 10px; top: 2px;
+  }
+
+  .hl { color: var(--accent2); font-weight: 700; }
+  .hlg { color: var(--green); font-weight: 700; }
+
+  /* Side col */
+  .side-col { padding: 36px 28px; }
+
+  .s-section { margin-bottom: 28px; }
+
+  .s-sec-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-row {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .skill-name { font-size: 11.5px; color: #bbb; }
+
+  .skill-dots { display: flex; gap: 4px; }
+
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--border);
+  }
+
+  .dot.on { background: var(--accent); }
+
+  .tool-tag {
+    display: inline-block;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: #999;
+    font-size: 10.5px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin: 0 4px 6px 0;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .edu-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+
+  .edu-school { font-size: 12px; font-weight: 600; color: var(--white); }
+  .edu-deg { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+  @media print {
+    body { padding: 0; background: #0d0d0d; }
+    .page { box-shadow: none; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">E-Commerce Manager · Digital Marketing Specialist</div>
+        <div class="hero-name">ธนเทพ<br><span>โสภาคำ</span></div>
+        <p class="hero-about">
+          ผู้เชี่ยวชาญด้าน E-Commerce และ Digital Marketing ที่ขับเคลื่อนด้วยตัวเลข
+          มีประสบการณ์ปั้นร้านค้าออนไลน์จาก 0 บน Shopee และ TikTok Shop
+          จนสร้างยอดขายสูงสุด 80,000 บาท/เดือน พร้อมทักษะครบวงจรด้าน Ads,
+          Content, Graphic Design และ Customer Sales
+        </p>
+      </div>
+
+      <div class="stats-col">
+        <div class="stat-card">
+          <span class="stat-num">80K</span>
+          <span class="stat-label">Peak Monthly Revenue</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">0→</span>
+          <span class="stat-label">Built From Scratch</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">4+</span>
+          <span class="stat-label">Years in Digital</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-strip">
+      <div class="contact-chip">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        095-983-6162
+      </div>
+      <div class="contact-chip">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        tanathep.sop.work@gmail.com
+      </div>
+      <div class="contact-chip">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        LINE: tthanathep
+      </div>
+      <div class="contact-chip">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        สมุทรปราการ 10290
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- MAIN COL -->
+    <div class="main-col">
+
+      <div class="m-section">
+        <div class="sec-title">Platform Expertise</div>
+        <div class="platform-grid">
+          <div class="platform-card">
+            <div class="p-name">Shopee</div>
+            <div class="p-desc">Seller Center, Ads, Flash Sale, Campaign, SEO listing</div>
+          </div>
+          <div class="platform-card">
+            <div class="p-name">TikTok Shop</div>
+            <div class="p-desc">Shop setup, Content, TikTok Ads, Affiliate</div>
+          </div>
+          <div class="platform-card">
+            <div class="p-name">Lazada</div>
+            <div class="p-desc">Product listing, Promotion management</div>
+          </div>
+          <div class="platform-card">
+            <div class="p-name">Facebook Ads</div>
+            <div class="p-desc">Campaign, Targeting, Budget optimization</div>
+          </div>
+          <div class="platform-card">
+            <div class="p-name">LINE OA</div>
+            <div class="p-desc">Broadcast, CRM, Customer retention</div>
+          </div>
+          <div class="platform-card">
+            <div class="p-name">WordPress</div>
+            <div class="p-desc">CMS, SEO content, Website management</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="sec-title">Work Experience</div>
+
+        <!-- Ninjaprinting -->
+        <div class="exp-item current">
+          <div class="current-badge">CURRENT</div>
+          <div class="exp-row">
+            <span class="exp-co">Ninjaprinting</span>
+            <span class="exp-period">2024 – ปัจจุบัน (~7 เดือน)</span>
+          </div>
+          <div class="exp-role">E-Commerce Manager · Graphic Designer · Sales Executive</div>
+          <ul class="exp-list">
+            <li>ปั้น Shopee & TikTok Shop ตั้งแต่ <span class="hl">ศูนย์ → ยอดขาย peak 80,000 บาท/เดือน</span> ด้วยมือคนเดียว</li>
+            <li>วางกลยุทธ์ Shopee Ads, Flash Sale, Campaign ตั้งค่า Keyword Ads และวิเคราะห์ ROAS</li>
+            <li>ออกแบบภาพสินค้า, Banner, Artwork สำหรับทุก Touchpoint ของร้าน</li>
+            <li>เขียน Product Title & Description ที่ติดค้นหาบน Shopee Algorithm</li>
+            <li>ผลิตสื่อสิ่งพิมพ์ครบวงจร: สติ๊กเกอร์, ป้ายถือ, โปสเตอร์</li>
+            <li>ตอบแชทลูกค้า ติดตามปัญหาจัดส่ง เคลม และแก้ไขสถานการณ์เร่งด่วน</li>
+            <li>รับสาย เจรจาต่อรอง <span class="hlg">ปิดดีลลูกค้า</span> และแก้ปัญหาหน้างาน</li>
+          </ul>
+        </div>
+
+        <!-- เซ่งหลี888 -->
+        <div class="exp-item">
+          <div class="exp-row">
+            <span class="exp-co">เซ่งหลี888</span>
+            <span class="exp-period">2025</span>
+          </div>
+          <div class="exp-role">Admin · Graphic Design · SEO Content</div>
+          <ul class="exp-list">
+            <li>ดูแลข้อมูลสินค้าบนแพลตฟอร์มและพัฒนาระบบหลังบ้าน</li>
+            <li>ออกแบบกราฟิกโปรโมท และตัดต่อวิดีโอสินค้า</li>
+            <li>เขียน SEO Content เพื่อเพิ่ม Organic Traffic</li>
+          </ul>
+        </div>
+
+        <!-- ชาตักวุ้น -->
+        <div class="exp-item">
+          <div class="exp-row">
+            <span class="exp-co">ชาตักวุ้น</span>
+            <span class="exp-period">2024</span>
+          </div>
+          <div class="exp-role">Content Creator · Graphic Designer</div>
+          <ul class="exp-list">
+            <li>วางแผนและสร้างโฆษณาบน TikTok, Shopee, Lazada</li>
+            <li>คิด Content และออกแบบ Visual ให้สอดคล้องกับ Brand</li>
+          </ul>
+        </div>
+
+        <!-- จีนเชียง -->
+        <div class="exp-item">
+          <div class="exp-row">
+            <span class="exp-co">บริษัท จีนเชียง 168 จำกัด</span>
+            <span class="exp-period">2021 – 2022</span>
+          </div>
+          <div class="exp-role">Admin · Telesales · Staff</div>
+          <ul class="exp-list">
+            <li>เสนอขายสินค้าออนไลน์ Up-sales และแนะนำ Ads TikTok แก่ลูกค้า</li>
+            <li>โทรติดตาม ให้คำปรึกษา และปิดการขายคอร์สออนไลน์</li>
+          </ul>
+        </div>
+
+        <!-- Freelance -->
+        <div class="exp-item">
+          <div class="exp-row">
+            <span class="exp-co">Freelance SEO Content Writer</span>
+            <span class="exp-period">2021 – 2025</span>
+          </div>
+          <div class="exp-role">Content Writer · SEO Specialist</div>
+          <ul class="exp-list">
+            <li>เขียน SEO Content หลากหลายอุตสาหกรรม ปรับ On-page ให้ติด Google</li>
+            <li>วางแผน Content Calendar และ Brief กราฟิกประกอบ</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDE COL -->
+    <div class="side-col">
+
+      <div class="s-section">
+        <div class="s-sec-title">Digital Skills</div>
+        <div class="skill-row">
+          <span class="skill-name">E-Commerce Mgmt</span>
+          <div class="skill-dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Shopee / TikTok Ads</span>
+          <div class="skill-dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Graphic Design</span>
+          <div class="skill-dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">SEO Content</span>
+          <div class="skill-dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Customer Sales</span>
+          <div class="skill-dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Facebook Ads</span>
+          <div class="skill-dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Analytics / Report</span>
+          <div class="skill-dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s-section">
+        <div class="s-sec-title">Tools</div>
+        <span class="tool-tag">Photoshop</span>
+        <span class="tool-tag">Canva</span>
+        <span class="tool-tag">Figma</span>
+        <span class="tool-tag">CapCut</span>
+        <span class="tool-tag">WordPress</span>
+        <span class="tool-tag">Google Analytics</span>
+        <span class="tool-tag">Google Docs</span>
+        <span class="tool-tag">MS Office</span>
+        <span class="tool-tag">Shopee Seller</span>
+        <span class="tool-tag">TikTok Shop</span>
+      </div>
+
+      <div class="s-section">
+        <div class="s-sec-title">Languages</div>
+        <div class="skill-row" style="margin-bottom:10px">
+          <span class="skill-name">ภาษาไทย</span>
+          <div class="skill-dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">English</span>
+          <div class="skill-dots">
+            <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s-section">
+        <div class="s-sec-title">Education</div>
+        <div class="edu-block">
+          <div class="edu-school">วิทยาลัยเทคโนโลยีสยามธุรกิจฯ</div>
+          <div class="edu-deg">ปวช. คอมพิวเตอร์ธุรกิจ</div>
+        </div>
+        <div class="edu-block">
+          <div class="edu-school">โรงเรียนบูรณะศึกษา</div>
+          <div class="edu-deg">มัธยมศึกษาปีที่ 3</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
